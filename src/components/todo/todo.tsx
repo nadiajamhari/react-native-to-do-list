@@ -9,6 +9,7 @@ interface ITodoProps {
 }
 
 const Todo = (props: ITodoProps) => {
+  console.log('the Data at Todo', props.data);
   const [isDone, setIsDone] = useState(false);
 
   return (
@@ -18,7 +19,9 @@ const Todo = (props: ITodoProps) => {
         unfillColor="#ffffff"
         iconStyle={{borderColor: 'black'}}
         isChecked={isDone}
-        onPress={setIsDone}
+        onPress={() => {
+          setIsDone(true);
+        }}
         style={styles.checkbox}
       />
       <Text style={styles.text}>{props.data.text}</Text>
@@ -31,7 +34,6 @@ export default Todo;
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    minHeight: '30px',
     height: 'auto',
     color: 'black',
     alignItems: 'center',
